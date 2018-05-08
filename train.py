@@ -70,7 +70,7 @@ loss_fn.cuda()
 
 net = transformer(way, img_size, N, d_model, d_k, h, drop_rate)
 
-net = nn.DataParallel(net)
+# net = nn.DataParallel(net)
 net.cuda()
 net.train()
 
@@ -123,7 +123,7 @@ for batch_id, (imgs, y) in enumerate(dataLoader, 1):
 
 
     if batch_id % save_every == 0:
-        torch.save(net.state_dict(), './model/model-batch-%d.pth'%(batch_id+1,))
+        torch.save(net.state_dict(), './model/model-batch-%d.pth'%(batch_id,))
 
     if batch_id % test_every == 0:
         net.eval()
